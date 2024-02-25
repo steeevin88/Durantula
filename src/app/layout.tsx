@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
 import Enforce from "@/util/enforce";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,8 @@ export default function RootLayout({
     <html lang="en">
       <UserProvider>
         <body className={`bg-gray-400 {inter.className}`}>
-        {children}
+          <Navbar loggedIn/>
+          {children}
         </body>
       </UserProvider>
     </html>
