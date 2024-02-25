@@ -4,6 +4,8 @@ import classNames from "classnames";
 import { useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import Link from "next/link";
+import Image from "next/image";
+import fohdlIcon from "../assets/fohdl icon.jpeg"
 
 export default function Navbar({ loggedIn }: { loggedIn?: boolean }) {
   const [toggled, setToggled] = useState(false);
@@ -13,7 +15,10 @@ export default function Navbar({ loggedIn }: { loggedIn?: boolean }) {
     <nav className={classNames("bg-gray-600 text-xl absolute top-0 w-full lg:flex overflow-hidden lg:justify-between lg:items-center px-8 py-2 lg:py-6 pb-6 transition-all duration-200 ease-in-out", { "max-h-screen lg:max-h-16": toggled, "max-h-16": !toggled })}>
       <div className="flex justify-between">
         <Link className="flex gap-2 items-center" href={loggedIn ? "/events" : "/"}>
-          <span className="text-2xl font-bold">Friends</span>
+          <a href="https://www.fohdpl.org/" target="_blank" rel="noopener noreferrer">
+            <Image src={fohdlIcon} alt="logo" className="w-12 h-12 p-2" width="64" height="64"/>
+          </a>
+          <span className="text-2xl font-bold">FOHDPL</span>
         </Link>
         <div className="flex items-center lg:hidden" onClick={() => setToggled(!toggled)}>
           <IoMenu className="h-8 w-8" />

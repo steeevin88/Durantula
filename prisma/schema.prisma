@@ -14,7 +14,6 @@ model User {
   photoURL String?
   eventIds String[] @db.ObjectId
   events Event[] @relation(name: "attendees", fields: [eventIds], references:[id])
-  adminEvents Event[] @relation(name: "admins", fields: [eventIds], references:[id])
   notes String?
 }
 
@@ -25,6 +24,5 @@ model Event {
   location String
   userIds  String[] @db.ObjectId
   users    User[]    @relation(name: "attendees", fields: [userIds], references:[id])
-  adminIds  String[] @db.ObjectId
-  admins   User[]    @relation(name: "admins", fields: [adminIds], references:[id])
+  adminName  String @db.ObjectId
 }

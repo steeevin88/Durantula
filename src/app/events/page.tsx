@@ -5,8 +5,7 @@ import { getSession } from "@auth0/nextjs-auth0";
 import { getUserByEmail } from "@/util/getUserByEmail";
 
 // create User entry in DB if email isn't found...
-async function makeUserIfFirstLogin() {
-  const email = (await getSession())!.user.email;
+async function makeUserIfFirstLogin(email : string) {
   const userInfo = (await getUserByEmail(email))!;
 
   if (!userInfo) {
@@ -29,7 +28,7 @@ type Props = {
   admin: boolean;
 }
 
-const EventComponent = ({ event, joined, admin}: Props) => {
+const EventComponent = ({event, joined, admin}: Props) => {
   return(
       <div className="grid grid-cols-5 md:min-h-48 bg-primary p-4 pr-6 rounded-lg gap-2 text-primary-content justify-center items-center">
         <div className="flex flex-col col-span-3">
@@ -51,19 +50,21 @@ const EventComponent = ({ event, joined, admin}: Props) => {
 
 export default async function Home() {
   const email = (await getSession())!.user.email;
+  makeUserIfFirstLogin(email);
   const userInfo = (await getUserByEmail(email))!;
   const events = await getEvents();
-  makeUserIfFirstLogin();
 
   return (
-    <main className="flex flex-col items-center min-h-[calc(100vh)] py-24">
+    <main className="flex flex-col items-center min-h-[calc(100vh)] py-16">
       <h2 className="p-8 md:p-12 text-4xl text-center font-extrabold tracking-tight text-gray-700 lg:text-4xl">
-        Friends&apos; Events
+        Friends of Hoover Durant Public Library 
       </h2>
       <div className="bg-gray-700 rounded-lg shadow-md
         w-[90%] md:w-[80%] grid lg:grid-cols-3 gap-2 overflow-y-auto  min-h-[calc(50vh)] p-4">
         {events.length > 0 ? (
-          <div></div>
+          events.map((event) => (
+            <EventComponent key={event.id} joined={event.userIds.includes(userInfo.id)} admin={event.adminName == userInfo.id} event={event}/>
+          ))
         ) : (
           <div className="flex flex-col col-span-3">
             <div className="text-3xl md:text-2xl text-center justify-center text-primary-content col-span-3 md:p-12">
