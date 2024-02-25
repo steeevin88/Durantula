@@ -50,7 +50,7 @@ const EventComponent = ({event, joined, admin}: Props) => {
 
 export default async function Home() {
   const email = (await getSession())!.user.email;
-  makeUserIfFirstLogin(email);
+  await makeUserIfFirstLogin(email);
   const userInfo = (await getUserByEmail(email))!;
   const events = await getEvents();
 

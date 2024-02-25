@@ -14,7 +14,8 @@ model User {
   photoURL String?
   eventIds String[] @db.ObjectId
   events Event[] @relation(name: "attendees", fields: [eventIds], references:[id])
-  notes String?
+  noteIds String[] @db.ObjectId
+  authoredNotes Note[] @relation(name:"authoredNotes")
 }
 
 model Event {
@@ -25,4 +26,14 @@ model Event {
   userIds  String[] @db.ObjectId
   users    User[]    @relation(name: "attendees", fields: [userIds], references:[id])
   adminName  String @db.ObjectId
+  notes Note[]  @relation(name: "eventNotes")
+}
+
+model Note {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  content  String
+  author   User      @relation(name:"authoredNotes", fields: [authorId], references: [id])
+  authorId String    @db.ObjectId
+  event    Event     @relation(name: "eventNotes", fields: [eventId], references: [id])
+  eventId  String    @db.ObjectId
 }

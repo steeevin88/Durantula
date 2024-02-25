@@ -8,10 +8,11 @@ export default function AddEvent() {
   async function submitEvent(formData: FormData) {
     "use server"
 
-    const email = (await getSession())!.user.email;
-    const userInfo = (await getUserByEmail(email))!;
     const session = await getSession();
     if (!session) return; // needed bc line 21 require non-null session
+
+    const email = session.user.email;
+    const userInfo = (await getUserByEmail(email))!;
 
 
     await prisma.event.create({

@@ -15,9 +15,7 @@ export default function Navbar({ loggedIn }: { loggedIn?: boolean }) {
     <nav className={classNames("bg-gray-600 text-xl absolute top-0 w-full lg:flex overflow-hidden lg:justify-between lg:items-center px-8 py-2 lg:py-6 pb-6 transition-all duration-200 ease-in-out", { "max-h-screen lg:max-h-16": toggled, "max-h-16": !toggled })}>
       <div className="flex justify-between">
         <Link className="flex gap-2 items-center" href={loggedIn ? "/events" : "/"}>
-          <a href="https://www.fohdpl.org/" target="_blank" rel="noopener noreferrer">
-            <Image src={fohdlIcon} alt="logo" className="w-12 h-12 p-2" width="64" height="64"/>
-          </a>
+          <Image src={fohdlIcon} alt="logo" className="w-12 h-12 p-2" width="64" height="64"/>
           <span className="text-2xl font-bold">FOHDPL</span>
         </Link>
         <div className="flex items-center lg:hidden" onClick={() => setToggled(!toggled)}>
@@ -26,6 +24,9 @@ export default function Navbar({ loggedIn }: { loggedIn?: boolean }) {
       </div>
       {loggedIn && (
         <div className="flex flex-col lg:flex-row gap-32 mt-4 mb-8 lg:my-0">
+          <Link href="/info" onClick={() => setToggled(!toggled)}>
+            Learn More
+          </Link>
           <Link href="/events" onClick={() => setToggled(!toggled)}>
             View Events
           </Link>
