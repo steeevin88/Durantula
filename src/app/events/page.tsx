@@ -48,9 +48,7 @@ export default async function Home() {
       <div className="bg-gray-700 rounded-lg shadow-md
         w-[90%] md:w-[80%] grid lg:grid-cols-3 gap-2 overflow-y-auto  min-h-[calc(50vh)] p-4">
         {events.length > 0 ? (
-          events.map((event) => (
-            <EventComponent key={event.id} joined={event.userIds.includes(userInfo.id)} admin={event.adminIds.includes(userInfo.id)} event={event}/>
-          ))
+          <div></div>
         ) : (
           <div className="flex flex-col col-span-3">
             <div className="text-3xl md:text-2xl text-center justify-center text-primary-content col-span-3 md:p-12">
