@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { UserProvider } from '@auth0/nextjs-auth0/client';
-import Enforce from "@/util/enforce";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 

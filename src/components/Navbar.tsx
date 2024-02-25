@@ -34,7 +34,9 @@ export default function Navbar({ loggedIn }: { loggedIn?: boolean }) {
           <div className="loading loading-spinner"></div>
         ) : (
           <div className="flex items-center gap-2 md:gap-4">
-            {user?.picture && <Link href="/account"><img className="rounded-full h-8 md:h-12" src={user.picture} /></Link>}
+            {user?.picture && <Link href="/account">
+              <img className="rounded-full h-8 md:h-12" src={user.picture} />
+            </Link>}
             <a href={user ? "/api/auth/logout" : "/api/auth/login"}>{user ? "Logout" : "Login"}</a>
           </div>
         )}

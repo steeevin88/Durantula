@@ -4,6 +4,20 @@ import { Event } from "@prisma/client";
 import { getSession } from "@auth0/nextjs-auth0";
 import { getUserByEmail } from "@/util/getUserByEmail";
 
+// create User entry in DB if email isn't found...
+async function makeUserIfFirstLogin() {
+  const email = (await getSession())!.user.email;
+  const userInfo = (await getUserByEmail(email))!;
+
+  if (!userInfo) {
+    await prisma.user.create({
+      data: {
+        email:email
+      }
+    })
+  }
+}
+
 async function getEvents() {
   const events = await prisma.event.findMany();
   return events;
@@ -39,6 +53,7 @@ export default async function Home() {
   const email = (await getSession())!.user.email;
   const userInfo = (await getUserByEmail(email))!;
   const events = await getEvents();
+  makeUserIfFirstLogin();
 
   return (
     <main className="flex flex-col items-center min-h-[calc(100vh)] py-24">
