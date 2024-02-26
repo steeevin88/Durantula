@@ -29,14 +29,14 @@ export default function AddEvent() {
 
   return (
     <div className='md:flex justify-center min-h-screen'>
-      <div className='flex flex-col px-4 py-32 gap-8'>
-        <h1 className='text-2xl font-bold text-gray-700 text-center'>Host a new event for friends of
+      <div className='flex flex-col px-4 py-32 text-black gap-8'>
+        <h1 className='text-2xl font-bold text-center'>Host a new event for friends of
         the Hoover Durant Public Library...</h1>
-        <form className='flex flex-col gap-4 text-primary' action={submitEvent}>
-          <input className='input input-large bg-gray-300' name="title" placeholder='Event Name' />
-          <input className='input input-large bg-gray-300' name="description" placeholder='Description' />
-          <input className='input input-large bg-gray-300' name="location" placeholder='Location' />
-          <input className='input input-large bg-gray-300' name="adminName" placeholder='Admin Name' />
+        <form className='flex flex-col gap-4 text-black' action={submitEvent}>
+          <input className='input input-large bg-gray-500' name="title" placeholder='Event Name' />
+          <input className='input input-large bg-gray-500' name="description" placeholder='Description' />
+          <input className='input input-large bg-gray-500' name="location" placeholder='Location' />
+          <input className='input input-large bg-gray-500' name="adminName" placeholder='Admin Name' />
           <button className='btn' type="submit">
             Add Event
           </button>

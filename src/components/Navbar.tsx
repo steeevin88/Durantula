@@ -12,7 +12,7 @@ export default function Navbar({ loggedIn }: { loggedIn?: boolean }) {
   const { user, isLoading } = useUser();
 
   return (
-    <nav className={classNames("bg-gray-600 text-xl absolute top-0 w-full lg:flex overflow-hidden lg:justify-between lg:items-center px-8 py-2 lg:py-6 pb-6 transition-all duration-200 ease-in-out", { "max-h-screen lg:max-h-16": toggled, "max-h-16": !toggled })}>
+    <nav className={classNames("bg-gray-200 text-black text-xl absolute top-0 w-full lg:flex overflow-hidden lg:justify-between lg:items-center px-8 py-2 lg:py-6 pb-6 transition-all duration-200 ease-in-out", { "max-h-screen lg:max-h-16": toggled, "max-h-16": !toggled })}>
       <div className="flex justify-between">
         <Link className="flex gap-2 items-center" href={loggedIn ? "/events" : "/"}>
           <Image src={fohdlIcon} alt="logo" className="w-12 h-12 p-2" width="64" height="64"/>

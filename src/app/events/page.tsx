@@ -31,7 +31,7 @@ type Props = {
 
 const EventComponent = ({event, joined, admin}: Props) => {
   return(
-      <div className="grid grid-cols-5 md:min-h-48 bg-primary p-4 pr-6 rounded-lg gap-2 text-primary-content justify-center items-center">
+      <div className="grid grid-cols-5 md:min-h-48 bg-white p-4 pr-6 rounded-lg gap-2 text-primary-content justify-center items-center">
         <div className="flex flex-col col-span-3">
           <div className="text-h-full text-2xl truncate">
             {event.title}

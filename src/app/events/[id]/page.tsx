@@ -70,7 +70,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="py-20 min-h-[calc(100vh)] flex flex-col gap-4">
+    <div className="py-20 min-h-[calc(100vh)] flex flex-col gap-4 text-black">
       <div className="grid grid-cols-5 text-center gap-4">
         <div className="text-5xl col-span-2">{eventData.title}</div>
         <div className="flex flex-col col-span-3">

@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <UserProvider>
-        <body className={`bg-gray-400 {inter.className}`}>
+        <body className={`bg-gray-300 {inter.className}`}>
           <Navbar loggedIn/>
           {children}
         </body>
