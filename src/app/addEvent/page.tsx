@@ -20,7 +20,8 @@ export default function AddEvent() {
         title: formData.get("title") as string,
         description: formData.get("description") as string,
         location: formData.get("location") as string,
-        adminName: userInfo.id
+        adminName: formData.get("adminName") as string,
+        adminId: userInfo.id
       }
     });
     redirect("/");
@@ -29,12 +30,13 @@ export default function AddEvent() {
   return (
     <div className='md:flex justify-center min-h-screen'>
       <div className='flex flex-col px-4 py-32 gap-8'>
-        <h1 className='text-4xl font-bold text-gray-700'>Add Event</h1>
+        <h1 className='text-2xl font-bold text-gray-700 text-center'>Host a new event for friends of
+        the Hoover Durant Public Library...</h1>
         <form className='flex flex-col gap-4 text-primary' action={submitEvent}>
-          <input className='input input-large' name="title" placeholder='Event Name' />
-          <input className='input input-large' name="description" placeholder='Description' />
-          <input className='input input-large' name="location" placeholder='Location' />
-          <input className='input input-large' name="adminName" placeholder='Admin Name' />
+          <input className='input input-large bg-gray-300' name="title" placeholder='Event Name' />
+          <input className='input input-large bg-gray-300' name="description" placeholder='Description' />
+          <input className='input input-large bg-gray-300' name="location" placeholder='Location' />
+          <input className='input input-large bg-gray-300' name="adminName" placeholder='Admin Name' />
           <button className='btn' type="submit">
             Add Event
           </button>
