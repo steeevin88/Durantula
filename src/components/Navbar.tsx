@@ -24,8 +24,8 @@ export default function Navbar({ loggedIn }: { loggedIn?: boolean }) {
       </div>
       {loggedIn && (
         <div className="flex flex-col lg:flex-row gap-32 mt-4 mb-8 lg:my-0">
-          <Link href="/info" onClick={() => setToggled(!toggled)}>
-            Learn More
+          <Link href="http://localhost:3000/signup" target="_blank" onClick={() => setToggled(!toggled)}>
+            Book Game
           </Link>
           <Link href="/events" onClick={() => setToggled(!toggled)}>
             View Events

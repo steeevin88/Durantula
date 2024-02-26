@@ -3,6 +3,7 @@ import prisma from "../../lib/prisma";
 import { Event } from "@prisma/client";
 import { getSession } from "@auth0/nextjs-auth0";
 import { getUserByEmail } from "@/util/getUserByEmail";
+import EventModal from "@/components/EventModal";
 
 // create User entry in DB if email isn't found...
 async function makeUserIfFirstLogin(email : string) {
@@ -44,6 +45,7 @@ const EventComponent = ({event, joined, admin}: Props) => {
             {admin ? "Manage" : (joined ? "View" : "Join")} Event
           </button>
         </a>
+        <EventModal event={event}/>
       </div>
   )
 }
